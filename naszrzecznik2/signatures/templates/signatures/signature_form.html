@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags i18n %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <h2>{{object.title}}</h2>
+        {{object.text|safe}}
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <div class="card card-light">
+            <a href="{% url 'signatures:list' slug=object.slug %}">
+            <h1 class="text-center">{{object.signature_set.count}}</h1>
+            <h2 class="text-center">{% trans 'of signatures' %}</h2>
+            </a>
+        </div>
+        {% if object.active %}
+        <div class="card card-brand">
+            {% crispy form %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

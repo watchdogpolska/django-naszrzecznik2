@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="{{config.META_DESCRIPTION}}">
+    <meta property="og:description" content="{{config.META_DESCRIPTION}}" />
+    <meta property="og:image" content="http://{{ request.META.HTTP_HOST }}{% static 'img/facebook.jpg'%}" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:site_name" content="{{config.PAGE_NAME}}"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    {% endblock %}
+    
+    <title>{{config.PAGE_NAME}}</title>
+
+</head>
+
+<body>
+    <div class="container container-page">
+        <div class="header row">
+            <!--
+            <div class="col-sm-12 col-lg-4 ">
+                <a href="http://siecobywatelska.pl">
+                    <img class="logo" src="{% static 'img/watchdog.png'%}" alt="Logo Watchdog">
+                </a>
+            </div>-->
+            <div class="col-xs-12 ">
+                <div class="menu-main">
+                    <ul>
+                        <li class="item-home"><a href="/"><i class="fa fa-2x fa-home"></i> <span class="visible-xs-inline visible-sm-inline">Główna</span></a></li>
+                        {% for petition in petition_category_list %}
+                        <li class="item-petition"><a href="{{petition.get_absolute_url}}">{{petition}}</a></li>
+                        {% endfor %}
+                        <li class="item-contact"><a href="{% url 'contact:form' %}">Kontakt</a></li>
+                        {# <li class="item-media"><a href="{% url 'media' %}">Dla mediów</a></li> #}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <main class="col-sm-12 col-md-10 col-md-offset-1">
+                <h1>{{config.PAGE_NAME}}</h1>
+
+                {% block content %}
+                <p>Use this document as a way to quick start any new project.</p>
+                {% endblock content %}
+            </main>
+
+        </div>
+
+        {% include '_footer.html' %}
+    {% block javascript %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    {% endblock %}
+</body>
+</html>

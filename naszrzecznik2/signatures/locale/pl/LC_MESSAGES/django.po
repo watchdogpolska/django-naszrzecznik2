@@ -1,0 +1,172 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-21 04:59+0000\n"
+"PO-Revision-Date: 2016-09-21 07:02+0200\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: admin.py:43
+msgid "Location picker"
+msgstr "Próbnik lokalizacji"
+
+#: models.py:17 templates/signatures/signature_list.html:18
+msgid "Name"
+msgstr "Nazwa"
+
+#: models.py:18 models.py:43
+msgid "Slug"
+msgstr "Identyfikator redakcyjny"
+
+#: models.py:23 models.py:42
+msgid "Category"
+msgstr "Kategoria"
+
+#: models.py:24
+msgid "Categories"
+msgstr "Kategorie"
+
+#: models.py:44
+msgid "Title"
+msgstr "Tytuł"
+
+#: models.py:45 templates/signatures/signature_list.html:9
+msgid "Text"
+msgstr "Treść"
+
+#: models.py:46
+msgid "Thank you text"
+msgstr "Tekst podziękowania"
+
+#: models.py:47
+msgid "Side text"
+msgstr "Tekst boczny"
+
+#: models.py:48
+msgid "Use organization name field?"
+msgstr "Używaj pola nazwy organizacji?"
+
+#: models.py:49
+msgid "Use first name field?"
+msgstr "Używaj pola imienia?"
+
+#: models.py:50
+msgid "Use second name field?"
+msgstr "Użyj pola nazwiska?"
+
+#: models.py:51
+msgid "Use place field?"
+msgstr "Używaj pola miejscowości?"
+
+#: models.py:52
+msgid "Use email field?"
+msgstr "Używaj adresu e-mail (zbieraj)?"
+
+#: models.py:53
+msgid "Active status"
+msgstr "Status aktywności"
+
+#: models.py:54
+msgid "Privacy aggrement"
+msgstr "Zgoda w zakresie prywatności"
+
+#: models.py:55
+msgid "Newsletter aggrement"
+msgstr "Zgoda w zakresie newslettera"
+
+#: models.py:59 models.py:77
+msgid "Petition"
+msgstr "Petycja"
+
+#: models.py:60
+msgid "Petitions"
+msgstr "Petycje"
+
+#: models.py:79 templates/signatures/signature_list.html:17
+msgid "Organization"
+msgstr "Organizacja"
+
+#: models.py:80
+msgid "First name"
+msgstr "Imię"
+
+#: models.py:81
+msgid "Second name"
+msgstr "Nazwisko"
+
+#: models.py:82 templates/signatures/signature_list.html:19
+msgid "Place"
+msgstr "Miejscowość"
+
+#: models.py:83
+msgid "E-mail"
+msgstr "E-mail"
+
+#: models.py:85
+msgid "Privacy acceptation"
+msgstr "Akceptacja prywatności"
+
+#: models.py:86
+msgid "Newsletter acceptation"
+msgstr "Akceptacja newslettera"
+
+#: models.py:88
+msgid "Latitude"
+msgstr "Wysokość geograficzna"
+
+#: models.py:89
+msgid "Longitude"
+msgstr "Szerokość geograficzna"
+
+#: models.py:91
+msgid "Visible"
+msgstr "Widoczny"
+
+#: models.py:96
+msgid "Signature"
+msgstr "Podpis"
+
+#: models.py:97
+msgid "Signatures"
+msgstr "Podpisy"
+
+#: templates/signatures/petition_detail.html:15
+#: templates/signatures/signature_form.html:14
+#: templates/signatures/signature_list.html:8
+#: templates/signatures/signature_list.html:50
+msgid "of signatures"
+msgstr "podpisów"
+
+#: templates/signatures/signature_list.html:11
+#: templates/signatures/signature_list.html:57
+msgid "Sign"
+msgstr "Podpisz!"
+
+#: urls.py:11
+msgid "^signatures-(?P<slug>[\\w-]+)$"
+msgstr "^podpisy-(?P<slug>[\\w-]+)$"
+
+#: urls.py:13
+msgid "^text-(?P<slug>[\\w-]+)$"
+msgstr "^tresc-(?P<slug>[\\w-]+)$"
+
+#: urls.py:15
+msgid "^form-(?P<slug>[\\w-]+)$"
+msgstr "^formularz-(?P<slug>[\\w-]+)$"
+
+#: urls.py:17
+msgid "^form-(?P<slug>[\\w-]+)/thanks$"
+msgstr "^formularz-(?P<slug>[\\w-]+)/thanks$"

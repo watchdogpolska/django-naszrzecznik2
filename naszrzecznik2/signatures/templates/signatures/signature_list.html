@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags i18n bootstrap_pagination %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        {% for pet in petitions %}
+        {{pet}}
+        (<a href="{% url 'signatures:list' slug=pet.slug %}">{{pet.signature_count}} {% trans 'of signatures' %}</a>,
+        <a href="{% url 'signatures:text' slug=pet.slug %}">{% trans 'Text' %}</a>
+        {% if pet.active %},
+        <a href="{% url 'signatures:form' slug=pet.slug %}">{% trans 'Sign' %}</a>{% endif %})
+        {% endfor %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    {% if petition.organization_name_use %}<th>{% trans 'Organization' %}</th>{% endif %}
+                    {% if petition.first_name_use or petition.second_name_use %}<th>{% trans 'Name' %}</th>{% endif %}
+                    {% if petition.place %}<th>{% trans 'Place' %}</th>{% endif %}
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in object_list %}
+                <tr>
+                    <th scope="row">{{ object.pk }}</th>
+                    {% if petition.organization_name_use %}<td>{{object.organization_name}}</td>{% endif %}
+                    {% if petition.first_name_use or petition.second_name_use %}<td>{{object.first_name}} {{object.second_name}}</td>{% endif %}
+                    {% if petition.place %}<td>{{object.place}}</td>{% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if page_obj.has_previous or page_obj.has_next %}
+        <div id="pagination">
+            {% if page_obj.has_previous %}
+            <a href="?page={{page.previous_page_number}}">«</a>
+            {% endif %}
+            {{page_obj.number}} z {{page_obj.paginator.num_pages}}
+            {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number}}">»</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <div class="card card-light">
+            <a href="{% url 'signatures:list' slug=petition.slug %}">
+            <h1 class="text-center">{{petition.signature_set.count}}</h1>
+            <h2 class="text-center">{% trans 'of signatures' %}</h2>
+            </a>
+        </div>
+        <div class="card card-brand">
+            <h2>{{petition.title}}</h2>
+            {{petition.text|safe}}
+            {% if petition.active %}
+            <p><a href="{% url 'signatures:form' slug=petition.slug %}" class="btn btn-warning">{% trans 'Sign' %}</a></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

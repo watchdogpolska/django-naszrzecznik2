@@ -1,0 +1,30 @@
+<div class="footer ">
+    <div class="row">
+        <div class="col-md-4 text-left">
+            <p>Serwis prowadzi:</p>
+            <p>Sieć Obywatelska Watchdog Polska<br>
+                ul. Ursynowska 22/2<br>
+                02-605 Warszawa<br>
+                <i class="fa fa-at"></i> <a href="http://www.google.com/recaptcha/mailhide/d?k=019SfyeYoOBXz-HBQPiC1dMw==&nbsp;c=7t4uleBGHACWoT6pq8zcubkAl0UxUqb94jcrqtFq5N0=">biuro</a></br>
+                <i class="fa fa-phone"></i> <a href="tel:+48228447355">+48 22 844 73 55</a>
+            </p>
+        </div>
+        <div class="col-md-4 col-md-offset-4 text-right ">
+            <h2 class="footer-header">Śledź wydarzenie:</h2>
+            <p class="social-link">
+                <a href="https://www.facebook.com/events/356394714556792/"><i class="fa fa-3x fa-facebook-official"></i></a> 
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{% url 'django.contrib.flatpages.views.flatpage' url='privacy/' %}">&sect; Polityka prywatności</a>
+        </div>
+        <div class="col-md-6 text-right">
+            Materiały na stronie opublikowane są na licencji <a href="https://creativecommons.org/licenses/by-sa/3.0/pl/" title="Treść licencji CC BY-SA 3.0 PL">CC BY-SA 3.0 PL</a>
+        </div>
+        <div class="col-xs-12 text-center">
+            silnik: <a href="http://jawne.info.pl">jawne.info.pl</a>{% if config.GITHUB_URL %} | <a href="{{config.GITHUB_URL}}">Github</a>{% endif %}
+        </div>
+    </div>
+</div>
