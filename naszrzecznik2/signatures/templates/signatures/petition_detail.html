@@ -24,11 +24,13 @@
             <h2 class="text-center">{% trans 'of signatures' %}</h2>
             </a>
         </div>
-        {% if object.active %}
         <div class="card card-brand">
-            {% crispy form %}
+            {% if object.active %}
+                {% crispy form %}
+            {% else %}
+                {{ object.side_text }}
+            {% endif %}
         </div>
-        {% endif %}
     </div>
 </div>
 {% endblock %}
