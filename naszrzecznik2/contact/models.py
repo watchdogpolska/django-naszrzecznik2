@@ -16,6 +16,9 @@ class ContactQuerySet(models.QuerySet):
 class Contact(TimeStampedModel):
     name = models.CharField(verbose_name=_("Name"), max_length=50)
     email = models.EmailField(verbose_name=_("Email"))
+    phone = models.CharField(verbose_name=_("Telephone"), blank=True, max_length=25)
+    description = models.TextField(verbose_name=_("Description"), blank=True)
+
     objects = ContactQuerySet.as_manager()
 
     class Meta:

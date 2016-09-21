@@ -1,12 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags i18n %}
 
-{% block content %}
-<div class="row">
-    <div class="col-sm-12 col-md-6">
-        <div class="card card-light">
-            {% trans 'Thank you. Message was send!' %}
-        </div>
-    </div>
-</div>
+{% block content_object %}
+{% trans 'Thank you. Message was send!' %}
 {% endblock %}
