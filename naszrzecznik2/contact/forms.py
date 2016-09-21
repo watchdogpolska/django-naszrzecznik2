@@ -22,7 +22,7 @@ class ContactForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
-        self.helper.add_input(Submit('action', "Send", css_class="btn-primary"))
+        self.helper.add_input(Submit('action', _("Send"), css_class="btn-primary"))
         self.helper.form_action = reverse('contact:form')
 
     def get_message(self):

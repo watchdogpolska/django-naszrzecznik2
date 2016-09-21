@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-21 15:08+0200\n"
+"POT-Creation-Date: 2016-09-21 22:42+0200\n"
 "PO-Revision-Date: 2016-09-21 07:02+0200\n"
 "Last-Translator: Adam Dobrawy <naczelnik@jawnosc.tk>\n"
 "Language-Team: \n"
@@ -23,7 +23,12 @@ msgstr ""
 msgid "Location picker"
 msgstr "Próbnik lokalizacji"
 
-#: models.py:17 templates/signatures/signature_list.html:18
+#: forms.py:33 templates/signatures/_petition_list.html:7
+#: templates/signatures/signature_list.html:51
+msgid "Sign"
+msgstr "Podpisz!"
+
+#: models.py:17 templates/signatures/signature_list.html:12
 msgid "Name"
 msgstr "Nazwa"
 
@@ -43,7 +48,7 @@ msgstr "Kategorie"
 msgid "Title"
 msgstr "Tytuł"
 
-#: models.py:45 templates/signatures/signature_list.html:9
+#: models.py:45 templates/signatures/_petition_list.html:6
 msgid "Text"
 msgstr "Treść"
 
@@ -95,7 +100,7 @@ msgstr "Petycja"
 msgid "Petitions"
 msgstr "Petycje"
 
-#: models.py:79 templates/signatures/signature_list.html:17
+#: models.py:79 templates/signatures/signature_list.html:11
 msgid "Organization"
 msgstr "Organizacja"
 
@@ -107,7 +112,7 @@ msgstr "Imię"
 msgid "Second name"
 msgstr "Nazwisko"
 
-#: models.py:82 templates/signatures/signature_list.html:19
+#: models.py:82 templates/signatures/signature_list.html:13
 msgid "Place"
 msgstr "Miejscowość"
 
@@ -143,17 +148,12 @@ msgstr "Podpis"
 msgid "Signatures"
 msgstr "Podpisy"
 
-#: templates/signatures/petition_detail.html:15
-#: templates/signatures/signature_form.html:14
-#: templates/signatures/signature_list.html:8
-#: templates/signatures/signature_list.html:50
+#: templates/signatures/_petition_list.html:5
+#: templates/signatures/petition_detail.html:16
+#: templates/signatures/signature_form.html:16
+#: templates/signatures/signature_list.html:44
 msgid "of signatures"
 msgstr "podpisów"
-
-#: templates/signatures/signature_list.html:11
-#: templates/signatures/signature_list.html:57
-msgid "Sign"
-msgstr "Podpisz!"
 
 #: urls.py:11
 msgid "^signatures-(?P<slug>[\\w-]+)$"
