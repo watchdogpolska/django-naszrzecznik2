@@ -20,7 +20,7 @@
             {% if object.active %}
                 {% crispy form %}
             {% else %}
-                {{ object.side_text }}
+                {{ object.side_text | safe }}
             {% endif %}
         </div>
     </div>
