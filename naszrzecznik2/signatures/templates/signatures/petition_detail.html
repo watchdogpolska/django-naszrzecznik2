@@ -4,8 +4,8 @@
 <div class="row">
     <div class="col-sm-12 col-md-6">
         <div class="card card-dark">
-            {% if petition.category.petition_set.all|length >= 2 %}
-                {% for pet in petition.category.petition_set.all %}
+            {% if petition.category.petition_set.with_signature_count.all|length >= 2 %}
+                {% for pet in petition.category.petition_set.with_signature_count.all %}
                 {{pet}}
                 (<a href="{% url 'signatures:list' slug=pet.slug %}">{{pet.signature_count}} {% trans 'of signatures' %}</a>,
                 <a href="{% url 'signatures:text' slug=pet.slug %}">{% trans 'Text' %}</a>
