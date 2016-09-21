@@ -1,0 +1,9 @@
+{% load i18n %}
+{% if petition_list|length >= 2 %}
+    {% for pet in petition_list %}
+    {{pet}}
+    (<a href="{% url 'signatures:list' slug=pet.slug %}">{{pet.signature_count}} {% trans 'of signatures' %}</a>,
+    <a href="{% url 'signatures:text' slug=pet.slug %}">{% trans 'Text' %}</a>{% if pet.active %},
+    <a href="{% url 'signatures:form' slug=pet.slug %}">{% trans 'Sign' %}</a>{% endif %})
+    {% endfor %}
+{% endif %}

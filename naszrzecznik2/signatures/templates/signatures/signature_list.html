@@ -3,15 +3,7 @@
 {% block content %}
 <div class="row">
     <div class="col-sm-12 col-md-6">
-        {% if petitions|length >= 2 %}
-            {% for pet in petitions %}
-            {{pet}}
-            (<a href="{% url 'signatures:list' slug=pet.slug %}">{{pet.signature_count}} {% trans 'of signatures' %}</a>,
-            <a href="{% url 'signatures:text' slug=pet.slug %}">{% trans 'Text' %}</a>
-            {% if pet.active %},
-            <a href="{% url 'signatures:form' slug=pet.slug %}">{% trans 'Sign' %}</a>{% endif %})
-            {% endfor %}
-        {% endif %}
+        {% include 'signatures/_petition_list.html' with object_list=petitions %}
         <table class="table table-striped">
             <thead>
                 <tr>
