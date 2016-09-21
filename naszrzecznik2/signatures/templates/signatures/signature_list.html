@@ -17,7 +17,7 @@
             <tbody>
                 {% for object in object_list %}
                 <tr>
-                    <th scope="row">{{ object.pk }}</th>
+                    <th scope="row">{{ object.counter }}</th>
                     {% if petition.organization_name_use %}<td>{{object.organization_name}}</td>{% endif %}
                     {% if petition.first_name_use or petition.second_name_use %}<td>{{object.first_name}} {{object.second_name}}</td>{% endif %}
                     {% if petition.place_use %}<td>{{object.place}}</td>{% endif %}

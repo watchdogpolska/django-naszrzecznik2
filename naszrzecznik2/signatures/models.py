@@ -1,10 +1,12 @@
 from __future__ import unicode_literals
-from django.core.urlresolvers import reverse
-from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
-from django.utils.translation import ugettext_lazy as _
 
 from autoslug.fields import AutoSlugField
+from django.core.urlresolvers import reverse
+from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+from django.utils.encoding import python_2_unicode_compatible
+from django.utils.translation import ugettext_lazy as _
 from model_utils.models import TimeStampedModel
 
 
@@ -41,18 +43,23 @@ class PetitionQuerySet(models.QuerySet):
 class Petition(TimeStampedModel):
     category = models.ForeignKey(Category, verbose_name=_("Category"))
     slug = AutoSlugField(populate_from='title', verbose_name=_("Slug"), unique=True)
+    # Content
     title = models.CharField(max_length=250, verbose_name=_('Title'))
     text = models.TextField(verbose_name=_("Text"))
     thank_you = models.TextField(verbose_name=_("Thank you text"))
     side_text = models.TextField(verbose_name=_("Side text"))
+    privacy_text = models.TextField(verbose_name=_("Privacy aggrement"), blank=True)
+    newsletter_text = models.TextField(verbose_name=_("Newsletter aggrement"), blank=True)
+
+    # Settings
     organization_name_use = models.BooleanField(verbose_name=_("Use organization name field?"))
     first_name_use = models.BooleanField(verbose_name=_("Use first name field?"))
     second_name_use = models.BooleanField(verbose_name=_("Use second name field?"))
     place_use = models.BooleanField(verbose_name=_("Use place field?"))
     email_use = models.BooleanField(verbose_name=_("Use email field?"))
+
+    # Status
     active = models.BooleanField(verbose_name=_("Active status"))
-    privacy_text = models.TextField(verbose_name=_("Privacy aggrement"), blank=True)
-    newsletter_text = models.TextField(verbose_name=_("Newsletter aggrement"), blank=True)
     objects = PetitionQuerySet.as_manager()
 
     class Meta:
@@ -75,6 +82,7 @@ class SignatureQuerySet(models.QuerySet):
 @python_2_unicode_compatible
 class Signature(TimeStampedModel):
     petition = models.ForeignKey(to=Petition, verbose_name=_("Petition"))
+    counter = models.SmallIntegerField(verbose_name=_("No."))
     # Text fields
     organization_name = models.CharField(max_length=100, verbose_name=_("Organization"), blank=True)
     first_name = models.CharField(max_length=100, verbose_name=_('First name'), blank=True)
@@ -100,3 +108,11 @@ class Signature(TimeStampedModel):
 
     def __str__(self):
         return self.organization_name or "%s %s" % (self.first_name, self.second_name)
+
+
+@receiver(pre_save, sender=Signature)
+def update_counter(sender, instance, **kwargs):
+    if instance.counter is None and instance.petition is not None:
+        instance.counter = (Signature.objects.
+                            filter(petition=instance.petition).
+                            count() + 1)
