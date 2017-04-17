@@ -7,6 +7,7 @@ A short description of the project.
      :target: https://github.com/pydanny/cookiecutter-django/
      :alt: Built with Cookiecutter Django
 
+This is DEPRECATED software. See https://github.com/watchdogpolska/petycja-norweskie for alternatives.
 
 :License: MIT
 
