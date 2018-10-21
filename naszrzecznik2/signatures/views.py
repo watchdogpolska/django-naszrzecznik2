@@ -1,9 +1,9 @@
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.views.generic import CreateView, DetailView, ListView, RedirectView
-
+from django.core.exceptions import ObjectDoesNotExist
 from cached_property import cached_property
-
+from django.http import Http404
 from .forms import SignatureForm
 from .models import Petition, Signature
 
@@ -15,10 +15,12 @@ class HomeView(RedirectView):
 
 class CategoryView(RedirectView):
     def get_redirect_url(self, category_slug):
-        return (Petition.objects.
-                filter(category__slug=category_slug).
-                latest().get_absolute_url())
-
+        try:
+            return (Petition.objects.
+                    filter(category__slug=category_slug).
+                    latest().get_absolute_url())
+        except ObjectDoesNotExist:
+            return Http404('<h1>Page not found</h1>')
 
 class SignatureListView(ListView):
     model = Signature
